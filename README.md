@@ -40,4 +40,3 @@ node app.js or nodemon app.js
 -  SSRF ✅ 16
 -   XXE
 
-on

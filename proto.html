@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Prototype pollution via jquery-deparam and XSS via reCAPTCHA gadget</title>
+</head>
+<body>
+  <script src="https://rawcdn.githack.com/AceMetrix/jquery-deparam/81428b3939c4cbe488202b5fa823ad661d64fb49/jquery-deparam.js"></script>
+  <script>
+    var query = deparam(location.search.slice(1));
+    var hash = deparam(location.hash.slice(1));
+
+    function loadUwt() {
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+
+      twq('init','twitter_pixel_id');
+      twq('track', 'PageView');
+    }
+    setTimeout(loadUwt, 3 * 1000);
+    
+  </script>
+  Hi, guys! Popup an alert :)
+  </body>
+</html>

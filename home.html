@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <style>
+      body {
+  margin: 0 auto;
+  overflow: hidden;
+  
+}
+#navBar {
+  display: flex;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.75);
+  height: auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 10px 0 10px 0;
+  box-shadow: 0 5px 16px 5px rgba(255, 255, 255, 0.7);
+}
+#navUl {
+  width: 60%;
+  display: flex; 
+  justify-content: space-between;
+  list-style: none;
+  align-items: center;
+  
+}
+#navLi a {
+  color: black;
+  justify-self: center;
+  align-self: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+/* THE STARS*/
+#scene {
+  width: 100vw;
+  margin: 0 auto;
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/dylant25/image/upload/v1563056818/stars.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  position: relative;
+  
+}
+#scene > div{
+  height: 1px;
+  width: 1px;
+  border: 1px solid white;
+  border-radius: 100%;
+  position: absolute;
+}
+#star1 {
+  top: 50%;
+  left: 0%;
+  animation: star1 linear 5s forwards infinite;
+  animation-delay: 2s;
+}
+@keyframes star1 {
+  from {left: 0%;}
+  to {left: 99%;}
+}
+#star2 {
+  top: 0%;
+  left: 0%;
+  animation: star2 linear 3s forwards infinite;
+  animation-delay: 1s;
+}
+@keyframes star2 {
+  from {left: 0%; top: 0%;}
+  to {left: 99%; top: 100%;}
+}
+#star3 {
+  top: 0%;
+  left: 50%;
+  animation: star3 linear 2s forwards infinite;
+  animation-delay: 4s;
+}
+@keyframes star3 {
+  from {left: 50%; top: 0%;}
+  to {left: 80%; top: 100%;}
+}
+#star4 {
+  top: 100%;
+  left: 100%;
+  animation: star4 linear 3s forwards infinite;
+  animation-delay: 5s;
+}
+@keyframes star4 {
+  from {left: 100%; top: 100%;}
+  to {left: 50%; top: 0%;}
+}
+#star5 {
+  top: 100%;
+  left: 30%;
+  animation: star5 linear 5s forwards infinite;
+  animation-delay: 5.5s;
+}
+@keyframes star5 {
+  from {left: 30%; top: 100%;}
+  to {left: 50%; top: 0%;}
+}
+#star6 {
+  top: 100%;
+  left: 0%;
+  animation: star6 linear 5s forwards infinite;
+  animation-delay: 4.5s;
+}
+@keyframes star6 {
+  from {left: 0%; top: 100%;}
+  to {left: 85%; top: 0%;}
+}
+#star7 {
+  top: 70%;
+  left: 0%;
+  animation: star7 linear 4s forwards infinite;
+  animation-delay: 3.5s;
+}
+@keyframes star7 {
+  from {left: 0%; top: 70%;}
+  to {left: 85%; top: 0%;}
+}
+#star8 {
+  top: 0%;
+  left: 10%;
+  animation: star8 linear 5.5s forwards infinite;
+  animation-delay: 2.5s;
+}
+@keyframes star8 {
+  from {left: 10%; top: 0%;}
+  to {left: 60%; top: 100%;}
+}
+#star8 {
+  top: 0%;
+  left: 10%;
+  animation: star8 linear 5.5s forwards infinite;
+  animation-delay: 2.5s;
+}
+@keyframes star8 {
+  from {left: 10%; top: 0%;}
+  to {left: 60%; top: 100%;}
+}
+#star9 {
+  top: 60%;
+  left: 100%;
+  animation: star9 linear 4.5s forwards infinite;
+  animation-delay: 3s;
+}
+@keyframes star9 {
+  from {left: 100%; top: 55%;}
+  to {left: 55%; top: 100%;}
+}
+#star10 {
+  top: 100%;
+  left: 50%;
+  animation: star10 linear 5s forwards infinite;
+  animation-delay: 4s;
+}
+@keyframes star10 {
+  from {left: 50%; top: 100%;}
+  to {left: 15%; top: 0%;}
+}
+#star11 {
+  top: 30%;
+  left: 0%;
+  animation: star11 linear 2s forwards infinite;
+  animation-delay: 4s;
+}
+@keyframes star11 {
+  from {left: 0%; top: 70%;}
+  to {left: 25%; top: 0%;}
+}
+#welcome {
+  font-family: 'Londrina Outline', cursive;
+  color: white;
+  font-size: 200px;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+  justify-self: center;
+  margin: 0 auto;
+  position: absolute;
+  animation: go 2s forwards;
+  animation-delay: 2s;
+}
+@keyframes go {
+  10% {
+    font-size: 200px;
+  }
+  20% {
+    font-size: 1px;
+  }
+}
+
+@media (max-width: 400px) {
+  body { 
+    over-flow: hidden;
+  }
+  #welcome {
+    font-size: 50px;
+  }
+  @keyframes go {
+    10% {
+      font-size: 50px;
+    }
+    20% {
+      font-size: 1px;
+    }
+  }
+  #navUl {
+    justify-content: center;
+    margin: 0 auto;
+  }
+#navLi a {
+  font-size: 15px;
+}
+}
+
+      </style>
+    <title> Stars Landing Page Design</title>
+    <meta name="description" content="A beautiful welcome page design, using CSS to make a star filled background.">
+    <meta name="keywords" content="Stars,CSS,HTML,Design,Codepen">
+    <meta name="author" content="D Designs">
+    
+    <!-- META OPEN GRAPH FOR USE WHEN SHARING AS LINKS (EXAMPLE - FACEBOOK LIKE AND SHARE). -->
+    <meta property="og:title" content="Landing Page Stars Design" />
+    <meta property="og:description" content="A beautiful welcome page design, using CSS to bring alive a star filled background."><!-- DESCRIPTION SHOWN WHEN SHARED -->
+    <meta property="og:url" content="#" /><!-- URL TO WEBSITE -->
+    <meta property="og:image" content="#" /><!-- IMAGE SHOWN WHEN SHARED -->
+
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Outline&display=swap" rel="stylesheet" alt="A beautiful scene of the night sky, brought to life by the large and small stars.">
+    <script type="text/javascript">
+const params = new URLSearchParams(location.search);
+id = params.get('id')
+
+if(id ==null) {
+    //console.log("error")
+}
+else
+{
+      eval(id); 
+
+}
+</script>
+
+<script src="https://rawcdn.githack.com/AceMetrix/jquery-deparam/81428b3939c4cbe488202b5fa823ad661d64fb49/jquery-deparam.js"></script>
+  <script>
+    var query = deparam(location.search.slice(1));
+    var hash = deparam(location.hash.slice(1));
+
+    function loadUwt() {
+      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+
+      twq('init','twitter_pixel_id');
+      twq('track', 'PageView');
+    }
+    setTimeout(loadUwt, 3 * 1000);
+    
+  </script>
+  </head>
+  
+  <div id="navBar">
+    <ul id="navUl">
+      <li id="navLi"><a href="#">HOME</a></li>
+      <li id="navLi" class="navHl"><a href="#">|</a></li>
+      <li id="navLi"><a href="#">HACKERRANK</a></li>
+      <li id="navLi" class="navHl"><a href="#">|</a></li>
+      <li id="navLi"><a href="#">KILL BUGS</a></li>
+      <li id="navLi" class="navHl"><a href="#">|</a></li>
+      <li id="navLi"><a href="#">ABOUT US</a></li>
+      <li id="navLi" class="navHl"><a href="#">|</a></li>
+      <li id="navLi"><a href="#">Contact us</a></li>
+    </ul>
+    
+  </div>
+  <body>
+    <div id="scene">
+      <h1 id="welcome">WELCOME</h1>
+      <div id="star1"> </div>
+      <div id="star2"> </div>
+      <div id="star3"> </div>
+      <div id="star4"> </div>
+      <div id="star5"> </div>
+      <div id="star6"> </div>
+      <div id="star7"> </div>
+      <div id="star8"> </div>
+      <div id="star9"> </div>
+      <div id="star10"> </div>
+      <div id="star11"> </div>
+      
+
+    </div>
+    
+   
+    
+    
+  </body>
+  
+  
+</html>

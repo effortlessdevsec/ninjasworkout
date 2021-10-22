@@ -1,0 +1,72 @@
+
+
+
+
+- const username=hello
+- const postsucess=messagepost
+
+//h2 welcome to #{username};
+
+head
+  link#bootstrap-css(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css' rel='stylesheet')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+  script(src='https://code.jquery.com/jquery-1.11.1.min.js')
+// ---- Include the above in your HEAD tag --------
+style.
+  .require {
+  color: #666;
+  }
+  label small success {
+  color: #999;
+  font-weight: normal;
+  }
+
+
+  
+.container
+  .row
+     
+
+    
+    .col-md-12.text-right.profile #{username}
+    .col-md-8.col-md-offset-2
+      h3 USER #{username}
+      h4=limit
+      p One User can do only one post per day
+      h3 #{postsucess}
+      h1 Create post
+      form(action='' method='POST' enctype="multipart/form-data")
+        .form-group.has-error
+          label(for='slug')
+            | Slug 
+            span.require *
+            small (This field use in url path.)
+          input.form-control(type='text' name='slug')
+          span.help-block Field not entered!
+        .form-group
+          label(for='title')
+            | Title 
+            span.require *
+          input.form-control(type='text' name='title')
+        .form-group
+          label(for='description') Description
+          textarea.form-control(rows='5' name='description')
+        .form-group
+          p
+            span.require *
+            |  - required fields
+          .form-group
+          label(for='Choose Pic')
+            | Title 
+            span.require *
+          input.form-control(type='file' name='file')
+        .form-group
+          button.btn.btn-primary(type='submit')
+            | Create
+          a.btn.btn-primary(href='profile')
+            | Cancel
+          input(type='hidden' name='_csrf' value=secrettoken)
+
+
+            
+            

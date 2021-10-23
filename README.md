@@ -41,3 +41,10 @@ node app.js or nodemon app.js
 -   XXE
 -   Open Redirection ✅ 17
 
+
+# Issues
+- In case of bugs in the application, feel free to create an [issues](https://github.com/effortlessdevsec/ninjasworkout/issues) on github.
+
+# Contribution
+- Feel free to create a pull request for any contribution.
+

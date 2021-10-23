@@ -1,5 +1,6 @@
 var session = require('express-session');
 
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -100,10 +101,10 @@ app.engine('pug', require('pug').__express)
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 
-
+app.use(require('serve-static')('public'));
 
 
 

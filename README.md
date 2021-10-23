@@ -39,4 +39,5 @@ node app.js or nodemon app.js
  - File Upload ✅ 15
 -  SSRF ✅ 16
 -   XXE
+-   Open Redirection ✅ 17
 

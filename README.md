@@ -43,6 +43,12 @@ node app.js or nodemon app.js
 -   Directory Traversal ✅ 18
 
 
+# TODO
+
+- Improvement in User Interface
+- Add New Vulnerabilities on weekly basis
+- Add Documentation of all the Vulnerabilites
+
 # Issues
 - In case of bugs in the application, feel free to create an [issues](https://github.com/effortlessdevsec/ninjasworkout/issues) on github.
 

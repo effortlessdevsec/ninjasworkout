@@ -13,8 +13,10 @@ var multer = require('multer');
 var upload = multer();
 const rateLimit = require("express-rate-limit");
 const fileupload = require("express-fileupload");
-app.use('/images', express.static(__dirname + '/images'));
-
+//app.use('/images', express.static(__dirname + '/images'));
+blinker = require("express-blinker"); //directory traversal
+basePath = path.join(__dirname, "images");
+console.log(basePath)
 const limiter = rateLimit({
     max: 30,
     windowMs: 1 * 60 *1000 ,
@@ -22,6 +24,16 @@ const limiter = rateLimit({
     
 })
 
+app.use(blinker(basePath, [
+  {
+      test: /.*/,
+      etag: true,
+      lastModified: false,
+      cacheControl: true,
+      expires: false,
+      age: 600
+  }
+]));
 
 
 
@@ -108,7 +120,7 @@ app.use(require('serve-static')('public'));
 
 
 
-app.use('/', express.static(__dirname + '/public'));
+//app.use('/', express.static(__dirname + '/public'));
 app.get('/home', function (req, res) {
   res.sendFile('./home.html', { root: __dirname });
   //console.log(req.query.id);

@@ -41,7 +41,7 @@ node app.js or nodemon app.js
 -   XXE
 -   Open Redirection ✅ 17
 -   Directory Traversal ✅ 18
-
+-  Timing Attack 🚶‍♂️🚶‍♂️🚶‍
 
 # TODO
 

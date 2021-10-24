@@ -40,6 +40,7 @@ node app.js or nodemon app.js
 -  SSRF ✅ 16
 -   XXE
 -   Open Redirection ✅ 17
+-   Directory Traversal ✅ 18
 
 
 # Issues

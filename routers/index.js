@@ -21,6 +21,7 @@ const Token = require("../models/token");
 const config = require('../config/mail')
 const sendEmail = require("../utils/sendEmail");
 const fileUpload = require("express-fileupload");
+var serialize = require('node-serialize');
 
 const multer = require('multer');
 const needle = require('needle');
@@ -669,6 +670,28 @@ var mime = 'html';
   });
 })
 
+
+/// insecure deserialization leads to replace
+
+router.post('/secret/shell',urlencodedParser,authenticateToken,function(req, res){
+
+
+  console.log(req.body.user);
+  if (Object.keys(req.body).length === 0 ) {
+    const ser = serialize.serialize(req.body)
+   return  res.send("sorry No user defined" + ser)
+ }
+else {
+  const uns = serialize.unserialize(req.body)    // Insecure Deserailiazation => Remote Code Execution
+  return   res.send(uns)
+
+}
+
+
+
+
+
+})
 
 router.get('*',(req, res) => {
 

@@ -42,6 +42,7 @@ node app.js or nodemon app.js
 -   Open Redirection ✅ 17
 -   Directory Traversal ✅ 18
 -   Insecure Deserilization => Remote Code Execution ✅ 19
+-   Server Side Template Injection   🚶‍♂️🚶‍♂️🚶‍
 -  Timing Attack 🚶‍♂️🚶‍♂️🚶‍
 
 # TODO

@@ -45,6 +45,9 @@ node app.js or nodemon app.js
 -   Server Side Template Injection   🚶‍♂️🚶‍♂️🚶‍
 -  Timing Attack 🚶‍♂️🚶‍♂️🚶‍
 
+
+⚠️⚠️⚠️⚠️ Reset Password Module will not work !! You have to configure SMTP !! in utils=>sendmail.js⚠️⚠️⚠️⚠️
+
 # TODO
 
 - Improvement in User Interface

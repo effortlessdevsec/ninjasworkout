@@ -3,8 +3,8 @@ const router = express.Router();
 const app = express();
 var bodyParser = require('body-parser');  
 const mongoose = require("mongoose")
-const userSchema = require("../models/User");
-const postSchema = require("../models/Post");
+const userSchema = require("../models/user");
+const postSchema = require("../models/post");
 const flash   = require('connect-flash');
 const jwt = require("jsonwebtoken");
 const accessTokenSecret = 'hello';
@@ -19,7 +19,7 @@ var session = require('express-session');
 const validateemail = require('../models/strict')
 const Token = require("../models/token");
 const config = require('../config/mail')
-const sendEmail = require("../utils/sendEmail");
+const sendEmail = require("../utils/sendemail");
 const fileUpload = require("express-fileupload");
 var serialize = require('node-serialize');
 
@@ -38,7 +38,7 @@ app.use(flash());
 
 var cors = require('cors')
 const { check,validationResult } = require('express-validator');
-const { find } = require('../models/User');
+const { find } = require('../models/user');
 
 app.use(cors())
 

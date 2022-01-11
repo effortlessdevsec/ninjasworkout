@@ -61,7 +61,7 @@ router.get('/secret/profile',authenticateToken,function (req, res) {
 
 router.get("/secret/register",function (req, res) {
 
-  res.render('register'); 
+  res.render('Register'); 
 })
 
 router.get("/secret/login",(req, res)=>{

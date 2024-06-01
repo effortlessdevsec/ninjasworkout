@@ -4,7 +4,7 @@ pipeline {
         stage('BuILD') {
             steps {
                 // Build the application
-                sh 'npm i'
+                sh 'npm i' ; sh 'echo hello'
             }
         }
         

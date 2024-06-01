@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('BuID') {
+        stage('BuILD') {
             steps {
                 // Build the application
                 sh 'npm i'

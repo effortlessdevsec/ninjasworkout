@@ -30,6 +30,7 @@ pipeline {
                         snykSecurity snykInstallation: 'Snyk', snykTokenId: 'f594fe1b-fde0-4e5f-9dff-3c56fae19cb7'
                     } catch (Exception e) {
                         echo e
+                        error 'e'
                         
                     }
                 }

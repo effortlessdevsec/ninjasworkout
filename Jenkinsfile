@@ -26,7 +26,8 @@ pipeline {
                 echo 'Running snyk scan'
                  script {
                     try {
-                        sh 'runin snyk scan'
+                        echo 'runin snyk scan'
+                        sh 'snyk test $(pwd)'
                     } catch (Exception e) {
                         echo 'Error in build stage'
                         error 'Build failed'

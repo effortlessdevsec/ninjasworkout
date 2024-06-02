@@ -50,7 +50,8 @@ pipeline {
                         script{
 
                             try{
-                                sh 'echo hello cool'
+                                sh 'echo scanning using njsscan'
+                                sh 'njsscan path $(pwd) || exit 1'
 
                                 
                             }

@@ -51,7 +51,7 @@ pipeline {
 
                             try{
                                 sh 'echo scanning using njsscan'
-                                sh 'njsscan path $(pwd) || exit 1'
+                                sh 'njsscan path "$(pwd)" || exit 1'
 
                                 
                             }

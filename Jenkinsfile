@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+
+     environment {
+        SNYK_TOKEN = credentials('SNYK_TOKEN') // Use the Snyk token from Jenkins credentials
+    }
     
     stages {
         stage('Build') {
@@ -27,7 +32,9 @@ pipeline {
                  script {
                     try {
                         echo 'running snyk scan'
-                        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'f594fe1b-fde0-4e5f-9dff-3c56fae19cb7'
+                        sh 'snyk auth $SNYK_TOKEN' // Authenticate Snyk CLI using the token
+                        sh 'snyk test' // Run Snyk test
+                        
                     } catch (Exception e) {
                         echo e
                         error 'e'

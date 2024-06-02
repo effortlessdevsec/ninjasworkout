@@ -28,7 +28,7 @@ pipeline {
             }
 
             parallel {
-                stage('Snyk Scan') {
+                stage('SCA Scan') {
                     steps {
                         script {
                             try {
@@ -42,6 +42,36 @@ pipeline {
                         }
                     }
                 }
+
+                stage('SAST SCANNER : NODEJSSCANNER'){
+
+                    steps {
+
+                        script{
+
+                            try{
+                                sh 'echo hello cool'
+
+                                
+                            }
+
+                            catch (Exception e ){
+
+                                
+                            }
+                            
+                            
+                        }
+
+                        
+                        
+                    }
+
+
+                    
+                }
+
+                
 
                 // Add other security checks here as needed
                 // stage('Another Security Check') {

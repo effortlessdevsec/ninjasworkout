@@ -51,13 +51,14 @@ pipeline {
 
                             try{
                                 sh 'echo scanning using njsscan'
-                                sh 'njsscan path "$(pwd)" exit_status=$? if [ $exit_status -ne 0 ]; then exit 1 fi'
+                                 sh 'njsscan path "$(pwd)" || { echo "Snyk found vulnerabilities"; exit 1; }'
+
 
                                 
                             }
 
                             catch (Exception e ){
-
+                                error 'NODEJSSCANNER scan failed'
                                 
                             }
                             

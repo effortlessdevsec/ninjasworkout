@@ -29,7 +29,8 @@ pipeline {
                         echo 'running snyk scan'
                         snykSecurity snykInstallation: 'Snyk', snykTokenId: 'f594fe1b-fde0-4e5f-9dff-3c56fae19cb7'
                     } catch (Exception e) {
-                        error 'found dependencies vulnerabilities '
+                        error e
+                        
                     }
                 }
 

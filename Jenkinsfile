@@ -27,7 +27,7 @@ pipeline {
                  script {
                     try {
                         echo 'runin snyk scan'
-                        sh 'snyk test $(pwd)'
+                        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'f594fe1b-fde0-4e5f-9dff-3c56fae19cb7'
                     } catch (Exception e) {
                         echo 'Error in build stage'
                         error 'Build failed'

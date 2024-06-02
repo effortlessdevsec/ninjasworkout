@@ -2,9 +2,7 @@ pipeline {
     agent any
 
 
-     environment {
-        SNYK_TOKEN = credentials('SNYK_TOKEN') // Use the Snyk token from Jenkins credentials
-    }
+    
     
     stages {
         stage('Build') {
@@ -22,11 +20,15 @@ pipeline {
         }
 
         stage('SECURITY CHECKS') {
+             environment {
+        SNYK_TOKEN = credentials('SNYK_TOKEN') // Use the Snyk token from Jenkins credentials
+    }
+            
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
-            }
+            
             steps {
                 echo 'Running snyk scan'
                  script {

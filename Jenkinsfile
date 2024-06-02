@@ -20,9 +20,7 @@ pipeline {
         }
 
         stage('SECURITY CHECKS') {
-             environment {
-        SNYK_TOKEN = credentials('SNYK_TOKEN') // Use the Snyk token from Jenkins credentials
-    }
+     
             
             when {
                 expression {

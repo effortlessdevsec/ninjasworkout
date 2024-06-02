@@ -34,8 +34,8 @@ pipeline {
                  script {
                     try {
                         echo 'running snyk scan'
-                        sh 'snyk auth $SNYK_TOKEN' // Authenticate Snyk CLI using the token
-                        sh 'snyk test' // Run Snyk test
+                        sh('snyk auth $SNYK_TOKEN') // Authenticate Snyk CLI using the token
+                        sh'snyk test' // Run Snyk test
                         
                     } catch (Exception e) {
                         echo e

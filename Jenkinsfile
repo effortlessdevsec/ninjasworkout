@@ -1,10 +1,9 @@
 pipeline {
     agent any
 
-  environment {
-        SNYK_TOKEN = credentials('SNYK_TOKEN')  // Assuming 'your-snyk-token-id' is the ID of the stored Snyk token credential in Jenkins
+    environment {
+        SNYK_TOKEN = credentials('SNYK_TOKEN')  // Assuming 'SNYK_TOKEN' is the ID of the stored Snyk token credential in Jenkins
     }
-    
     
     stages {
         stage('Build') {
@@ -22,36 +21,36 @@ pipeline {
         }
 
         stage('SECURITY CHECKS') {
-             
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
 
-        parallel {
-             stage('Snyk Scan') {
-                   steps {
-                echo 'Running snyk scan'
-                 script {
-                    try {
-                        echo 'running snyk scan'
-                        sh('snyk auth $SNYK_TOKEN') // Authenticate Snyk CLI using the token
-                        sh 'snyk test || { echo "Snyk found vulnerabilities"; exit 1; }'
-                        
-                    } catch (Exception e) {
-                        echo e
-                        error 'e'
-                        
+            parallel {
+                stage('Snyk Scan') {
+                    steps {
+                        script {
+                            try {
+                                echo 'Running Snyk scan'
+                                sh('snyk auth $SNYK_TOKEN') // Authenticate Snyk CLI using the token
+                                sh 'snyk test || { echo "Snyk found vulnerabilities"; exit 1; }'
+                            } catch (Exception e) {
+                                echo "Error during Snyk scan: ${e}"
+                                error 'Snyk scan failed'
+                            }
+                        }
                     }
                 }
 
+                // Add other security checks here as needed
+                // stage('Another Security Check') {
+                //     steps {
+                //         echo 'Running another security check...'
+                //     }
+                // }
             }
-                }
-            
-            }
-            
-        
+        }
 
         stage('Deploy') {
             when {

@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-
+  environment {
+        SNYK_TOKEN = credentials('SNYK_TOKEN')  // Assuming 'your-snyk-token-id' is the ID of the stored Snyk token credential in Jenkins
+    }
     
     
     stages {
@@ -26,7 +28,7 @@ pipeline {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
-            
+            }
             steps {
                 echo 'Running snyk scan'
                  script {

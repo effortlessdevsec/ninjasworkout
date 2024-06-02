@@ -22,14 +22,16 @@ pipeline {
         }
 
         stage('SECURITY CHECKS') {
-     
-            
+             
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
-            steps {
+
+        parallel {
+             stage('Snyk Scan') {
+                   steps {
                 echo 'Running snyk scan'
                  script {
                     try {
@@ -45,7 +47,11 @@ pipeline {
                 }
 
             }
-        }
+                }
+            
+            }
+            
+        
 
         stage('Deploy') {
             when {

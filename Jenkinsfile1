@@ -1,38 +1,33 @@
-    pipeline {
-        agent any
+pipeline {
+    agent any
 
-    tools {nodejs "node"}
-    tools {snyk "snyk"}
+    tools {
+        nodejs "node" // Specify the Node.js tool
+        snyk "snyk"   // Specify the Snyk tool
+    }
 
-        stages {
-            stage("BUILD") {
-                steps {
-                    echo "Starting building the Node.js application"
-                    sh 'npm i'
-                    
-                }
+    stages {
+        stage("BUILD") {
+            steps {
+                echo "Starting building the Node.js application"
+                sh 'npm i'
             }
         }
 
-
-        stage("SECURITY TEST"){
-
+        stage("SECURITY TEST") {
             parallel {
-
-                stage("SCA SCAN")
-                {
-                    sh 'snyk test'
-
+                stage("SCA SCAN") {
+                    steps {
+                        sh 'snyk test' // Run Snyk security test
+                    }
                 }
-            }
-
-
-
-        }
-
-        post {
-            failure {
-                error 'Error in pipeline!'
             }
         }
     }
+
+    post {
+        failure {
+            error 'Error in pipeline!'
+        }
+    }
+}

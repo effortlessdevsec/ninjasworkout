@@ -20,7 +20,7 @@ pipeline {
                     steps {
                         echo "Running Snyk security test"
                          // Run Snyk security test
-                       sh -c 'snyk test; echo "Exit code: $?"'
+                       sh  'snyk test; echo "Exit code: $?"'
 
                    }
                 }

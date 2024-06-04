@@ -23,6 +23,10 @@ pipeline {
                         script {
                             def exitCode = sh(script: 'snyk test', returnStatus: true)
                             echo "Exit code: ${exitCode}"
+                            if(${exitCode}>1) {
+
+                            error 'error in running the snyk'
+                            }
                         }
                     }
                 }

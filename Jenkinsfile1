@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs "node" 
-          snyk "snyk" 
+          Snyk "snyk" 
     }
 
     stages {

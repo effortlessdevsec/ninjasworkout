@@ -10,7 +10,7 @@ pipeline {
         stage("BUILD") {
             steps {
                 echo "Starting building the Node.js application"
-                sh 'npm i'
+                sh 'npm install'
             }
         }
 
@@ -19,12 +19,11 @@ pipeline {
                 stage("SCA SCAN") {
                     steps {
                         echo "Running Snyk security test"
-                        // Run Snyk security test and capture the exit code
                         script {
                             def exitCode = sh(script: 'snyk test', returnStatus: true)
                             echo "Exit code: ${exitCode}"
-                            if (exitCode > 1) {
-                                error 'Error in running the Snyk test'
+                            if (exitCode != 0) {
+                                error 'Snyk test failed'
                             }
                         }
                     }
@@ -35,7 +34,7 @@ pipeline {
 
     post {
         failure {
-            error 'Error in pipeline!'
+            echo 'Pipeline failed!'
         }
     }
 }

@@ -20,7 +20,7 @@ pipeline {
                     steps {
                         echo "Running Snyk security test"
                         script {
-                            def exitCode = sh(script: 'snyk test', returnStatus: true)
+                            def exitCode = sh(script: 'snyk test')
                             echo "Exit code: ${exitCode}"
                             if (exitCode != 0) {
                                 error 'Snyk test failed'

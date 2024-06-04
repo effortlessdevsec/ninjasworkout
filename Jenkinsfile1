@@ -6,6 +6,11 @@ pipeline {
         snyk "snyk" // Specify the Snyk tool
     }
 
+environment{
+ SNYK_TOKEN = credentials('SNYK_TOKEN')
+
+}
+
     stages {
         stage("BUILD") {
             steps {
@@ -20,11 +25,8 @@ pipeline {
                     steps {
                         echo "Running Snyk security test"
                         script {
-                            def exitCode = sh(script: 'snyk test')
-                            echo "Exit code: ${exitCode}"
-                            if (exitCode != 0) {
-                                error 'Snyk test failed'
-                            }
+                           sh 'snyk auth "${SNYK_TOKEN}"'
+                           sh 'snyk test "$(pwd}"'
                         }
                     }
                 }

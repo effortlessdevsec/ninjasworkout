@@ -1,31 +1,18 @@
 pipeline {
+    agent any
 
-agent any 
-
-stages {
-
-    stage("BUILD")
-{
-    steps {
-
-        echo "starting building the node js application"
-        sh 'npm i'
-
-
+    stages {
+        stage("BUILD") {
+            steps {
+                echo "Starting building the Node.js application"
+                sh 'npm i'
+            }
+        }
     }
 
-}
-
-post {
-
-failure {
-
-    error 'error in pipeline !!'
-}
-
-}
-
-
-
-}
+    post {
+        failure {
+            error 'Error in pipeline!'
+        }
+    }
 }

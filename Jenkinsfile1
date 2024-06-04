@@ -5,6 +5,7 @@ pipeline {
         stage("BUILD") {
             steps {
                 echo "Starting building the Node.js application"
+                sh 'npm i'
                  
             }
         }

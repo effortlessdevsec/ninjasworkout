@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node" // Specify the Node.js tool
-           // Specify the Snyk tool
+        nodejs "node" 
+          snyk "snyk" 
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
             parallel {
                 stage("SCA SCAN") {
                     steps {
-                       sh 'npm i snyk'
+                       
                         sh 'snyk test' // Run Snyk security test
                     }
                 }

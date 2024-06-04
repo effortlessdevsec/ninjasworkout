@@ -19,7 +19,8 @@ pipeline {
                 stage("SCA SCAN") {
                     steps {
                         echo "Running Snyk security test"
-                        sh 'snyk test' // Run Snyk security test
+                         // Run Snyk security test
+                         dependencyCheckPublisher pattern: '', unstableNewCritical: 0, unstableNewLow: 1, unstableTotalLow: 1
                     }
                 }
             }

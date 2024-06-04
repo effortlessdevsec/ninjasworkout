@@ -19,10 +19,12 @@ pipeline {
                 stage("SCA SCAN") {
                     steps {
                         echo "Running Snyk security test"
-                         // Run Snyk security test
-                       sh  'snyk test; echo \"Exit code: \$?\"'
-
-                   }
+                        // Run Snyk security test and capture the exit code
+                        script {
+                            def exitCode = sh(script: 'snyk test', returnStatus: true)
+                            echo "Exit code: ${exitCode}"
+                        }
+                    }
                 }
             }
         }

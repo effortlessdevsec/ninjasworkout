@@ -30,6 +30,22 @@ environment{
                         }
                     }
                 }
+
+          stage('SAST-SCAN'){
+             steps{
+                       echo "starting sast scan"
+                       script{
+                        sh 'njsscan  --missing-controls "$(pwd)"'
+
+                       }  
+                   
+             }
+
+
+
+          }
+
+
             }
         }
     }

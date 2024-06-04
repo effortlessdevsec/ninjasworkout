@@ -5,7 +5,7 @@ agent any
 stages {
 
     stage("BUILD")
-
+{
     steps {
 
         echo "starting building the node js application"
@@ -27,4 +27,5 @@ failure {
 
 
 
+}
 }

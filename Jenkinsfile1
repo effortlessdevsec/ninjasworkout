@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs "node" // Specify the Node.js tool
-        snyk "snyk"   // Specify the Snyk tool
+           // Specify the Snyk tool
     }
 
     stages {
@@ -18,6 +18,7 @@ pipeline {
             parallel {
                 stage("SCA SCAN") {
                     steps {
+                       sh 'npm i snyk'
                         sh 'snyk test' // Run Snyk security test
                     }
                 }

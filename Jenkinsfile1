@@ -34,7 +34,7 @@ pipeline {
                     steps {
                         echo 'Starting SAST scan'
                         script {
-                            sh 'njsscan --missing-controls "$(pwd)"'
+                            sh 'njsscan  "$(pwd)"'
                         }
                     }
                 }

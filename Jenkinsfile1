@@ -27,7 +27,7 @@ pipeline {
                           echo "${env.JOB_NAME}"
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test \"$(pwd)\" --json-file-output=output.json'
-                            echo 'savedd in "${env.STAGE_NAME}"
+                            echo 'savedd in "${env.STAGE_NAME}"'
 
                         }
                     }

@@ -2,61 +2,52 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node"
-        snyk "snyk" // Specify the Snyk tool
+        nodejs 'node'
+        snyk 'snyk' // Specify the Snyk tool
     }
 
-environment{
- SNYK_TOKEN = credentials('SNYK_TOKEN')
-
-}
+    environment {
+        SNYK_TOKEN = credentials('SNYK_TOKEN')
+    }
 
     stages {
-        stage("BUILD") {
+        stage('BUILD') {
             steps {
-                echo "Starting building the Node.js application"
+                echo 'Starting to build the Node.js application'
                 sh 'npm install'
             }
         }
 
-        stage("SECURITY TEST") {
+        stage('SECURITY TEST') {
             parallel {
-                stage("SCA SCAN") {
+                stage('SCA SCAN') {
                     steps {
-                        echo "Running Snyk security test"
+                        echo 'Running Snyk security test'
                         script {
-                           sh 'snyk auth "${SNYK_TOKEN}"'
-                           sh 'snyk test "$(pwd)"'
+                            sh 'snyk auth "${SNYK_TOKEN}"'
+                            sh 'snyk test "$(pwd)"'
                         }
                     }
                 }
 
-          stage('SAST-SCAN'){
-             steps{
-                       echo "starting sast scan"
-                       script{
-                        sh 'njsscan  --missing-controls "$(pwd)"'
-
-                       }  
-                   
-             }
-
-
-
-          }
-
-    
-
-
+                stage('SAST SCAN') {
+                    steps {
+                        echo 'Starting SAST scan'
+                        script {
+                            sh 'njsscan --missing-controls "$(pwd)"'
+                        }
+                    }
+                }
             }
         }
 
-          stage('PRE-PROD') {
-        echo 'deploying to staging'
-          node index.js
-
-          }
-      
+        stage('PRE-PROD') {
+            steps {
+                echo 'Preparing for deployment to pre-production'
+                // Add your pre-prod deployment steps here
+                sh 'node app.js'
+            }
+        }
     }
 
     post {

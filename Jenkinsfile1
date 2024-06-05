@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs 'node'
-        snyk 'snyk' // Specify the Snyk tool
+        snyk "snyk" // Specify the Snyk tool
     }
 
     environment {

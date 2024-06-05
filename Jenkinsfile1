@@ -24,6 +24,7 @@ pipeline {
                     steps {
                         echo 'Running Snyk security test'
                         script {
+                          echo "${env.JOB_NAME}"
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test "$(pwd)" --json-file-output=${env.JOB_NAME}.json'
                            echo 'output saved in ${env.JOB_NAME}.json '

@@ -45,9 +45,18 @@ environment{
 
           }
 
+    
+
 
             }
         }
+
+          stage('PRE-PROD') {
+        echo 'deploying to staging'
+          node index.js
+
+          }
+      
     }
 
     post {

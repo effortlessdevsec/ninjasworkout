@@ -26,8 +26,7 @@ pipeline {
                         script {
                           echo "${env.JOB_NAME}"
                             sh 'snyk auth "${SNYK_TOKEN}"'
-                            sh 'snyk test "$(pwd)" --json-file-output="${env.JOB_NAME}.json"'
-                           echo 'output saved in "${env.JOB_NAME}.json" '
+                            sh 'snyk test "$(pwd)" --json-file-output=${env.JOB_NAME}.json'
 
                         }
                     }
@@ -38,7 +37,6 @@ pipeline {
                         echo 'Starting SAST scan'
                         script {
                             sh 'njsscan  "$(pwd)" --json -o ${env.JOB_NAME}.${env.STAGE_NAME}.json'
-                           echo 'output saved in ${env.JOB_NAME}.${env.STAGE_NAME}.json '
                         }
                     }
                 }

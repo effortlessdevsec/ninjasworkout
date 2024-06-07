@@ -8,6 +8,7 @@ pipeline {
 
     environment {
         SNYK_TOKEN = credentials('SNYK_TOKEN')
+        DEFECT_DOJO = credentials('DEFECT_DOJO')
     }
 
     stages {
@@ -23,10 +24,18 @@ pipeline {
                 stage('SCA SCAN') {
                     steps {
                         echo 'Running Snyk security test'
-                        script {
+                         
+script {
                           echo "${env.JOB_NAME}"
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test \"$(pwd)\" --json-file-output=SNYK.json'
+                                 snyk_exit_code=$?
+                                if(snyk_exit_code==1){
+                                     echo "vulnerabilities found . uploading code to Defectdojo "
+                                } else{  echo "no vulnerabilities found" }
+
+           
+
                           
 
                         }

@@ -34,25 +34,26 @@ pipeline {
                 }
 
                 stage('SAST SCAN') {
-                    steps {
-                        echo 'Starting SAST scan'
-                        script {
-                            sh 'njsscan  "$(pwd)" --json -o NJSSCAN.json'
-                             sh 'curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
-                                            --header 'Authorization: Token "${DEFECT_DOJO}"' \
-                                            --form 'engagement_name="SAST"' \
-                                            --form 'verified="true"' \
-                                            --form 'active="true"' \
-                                            --form 'lead="1"' \
-                                            --form 'tags="test"' \
-                                            --form 'scan_type="Snyk Scan"' \
-                                            --form 'minimum_severity="Info"' \
-                                            --form 'close_old_findings="false"' \
-                                            --form 'file=@"/Users/effortlessdevsec/Desktop/abcd.json"' \
-                                            --form 'product_name="E BANKING APP"' \
-                                            --form 'test_title="hello"''
-                        }
-                    }
+                   steps {
+    echo 'Starting SAST scan'
+    script {
+        sh 'njsscan "$(pwd)" --json -o NJSSCAN.json'
+        sh "curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
+            --header 'Authorization: Token ${DEFECT_DOJO}' \
+            --form 'engagement_name=\"SAST\"' \
+            --form 'verified=\"true\"' \
+            --form 'active=\"true\"' \
+            --form 'lead=\"1\"' \
+            --form 'tags=\"test\"' \
+            --form 'scan_type=\"Snyk Scan\"' \
+            --form 'minimum_severity=\"Info\"' \
+            --form 'close_old_findings=\"false\"' \
+            --form 'file=@\"NJSSCAN.json\"' \
+            --form 'product_name=\"E BANKING APP\"' \
+            --form 'test_title=\"hello\"'"
+    }
+}
+
                 }
             }
         }

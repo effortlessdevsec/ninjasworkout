@@ -38,7 +38,19 @@ pipeline {
     echo 'Starting SAST scan'
     script {
         sh 'njsscan "$(pwd)" --json -o NJSSCAN.json'
-        sh "curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
+        
+    }
+}
+
+                }
+            }
+        }
+
+    }
+
+    post {
+          always{
+              sh "curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
             --header 'Authorization: Token ${DEFECT_DOJO}' \
             --form 'engagement_name=\"SAST\"' \
             --form 'verified=\"true\"' \
@@ -51,18 +63,11 @@ pipeline {
             --form 'file=@\"NJSSCAN.json\"' \
             --form 'product_name=\"E BANKING APP\"' \
             --form 'test_title=\"hello\"'"
-    }
-}
 
-                }
-            }
-        }
-
-    }
-
-    post {
+          }
         failure {
             echo 'Pipeline failed!'
+           
         }
     }
 }

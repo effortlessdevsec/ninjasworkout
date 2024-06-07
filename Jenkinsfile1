@@ -52,19 +52,19 @@ pipeline {
           always{
            sh 'echo $(pwd);ls'
      sh '''
-                        curl --location "http://localhost:8080/api/v2/reimport-scan/" \
-                             --header "Authorization: Token ${DEFECT_DOJO}" \
-                             --form "engagement_name=\"SAST\"" \
-                             --form "verified=\"true\"" \
-                             --form "active=\"true\"" \
-                             --form "lead=\"1\"" \
-                             --form "tags=\"test\"" \
-                             --form "scan_type=\"Snyk\\ Scan\"" \
-                             --form "minimum_severity=\"Info\"" \
-                             --form "close_old_findings=\"false\"" \
-                             --form 'file=@"/Users/effortlessdevsec/.jenkins/workspace/NODEJS-SECURE-PIPELINE/NJSSCAN.json"' \
-                             --form "product_name=\"NINZASWORKOUT\"" \
-                             --form "test_title=\"SCA\""
+                                       curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
+                                                --header 'Authorization: Token 8caa580498e0dab4a716f991228787d361520052' \
+                                                --form 'engagement_name="SAST"' \
+                                                --form 'verified="true"' \
+                                                --form 'active="true"' \
+                                                --form 'lead="1"' \
+                                                --form 'tags="test"' \
+                                                --form 'scan_type="Snyk Scan"' \
+                                                --form 'minimum_severity="Info"' \
+                                                --form 'close_old_findings="false"' \
+                                                --form 'file=@"/Users/effortlessdevsec/.jenkins/workspace/NODEJS-SECURE-PIPELINE/NJSSCAN.json"' \
+                                                --form 'product_name="NINZASWORKOUT"' \
+                                                    --form 'test_title="SCA"'
                     '''
 
 

@@ -24,14 +24,13 @@ pipeline {
                 stage('SCA SCAN') {
                     steps {
                         echo 'Running Snyk security test'
-                         
-script {
+                         script {
                           echo "${env.JOB_NAME}"
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test \"$(pwd)\" --json-file-output=SNYK.json'
-                                 snyk_exit_code=$?
+                                 snyk_exit_code = $?
                                 if (snyk_exit_code==1){
-                                     echo "vulnerabilities found . uploading code to Defectdojo "
+                                     echo "vulnerabilities found  "
                                 } else {  echo "no vulnerabilities found" }
 
            

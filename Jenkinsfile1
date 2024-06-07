@@ -27,7 +27,7 @@ pipeline {
     script {
         echo "${env.JOB_NAME}"
         sh "snyk auth ${SNYK_TOKEN}"
-        sh 'snyk test "$(pwd)" --json-file-output=SNYK.json'
+        sh 'snyk test "$(pwd)" --json-file-output=SNYK1.json'
     }
 }
 

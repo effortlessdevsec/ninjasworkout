@@ -80,12 +80,12 @@ pipeline {
                                                                  --form 'active="true"' \
                                                                  --form 'lead="1"' \
                                                                  --form 'tags="test"' \
-                                                                 --form 'scan_type="Semgrep Scan"' \
+                                                                 --form 'scan_type="Semgrep JSON Report"' \
                                                                  --form 'minimum_severity="Info"' \
                                                                  --form 'close_old_findings="false"' \
                                                                  --form "file=@$PWD/semgrep.json" \
                                                                  --form 'product_name="NINZASWORKOUT"' \
-                                                                 --form 'test_title="SCA"'
+                                                                 --form 'test_title="code scan"'
                                                                                           '''
 
 

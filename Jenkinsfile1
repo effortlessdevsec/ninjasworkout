@@ -62,7 +62,7 @@ pipeline {
             --form 'close_old_findings=\"false\"' \
             --form 'file=@\"NJSSCAN.json\"' \
             --form 'product_name=\"NINZASWORKOUT\"' \
-            --form 'test_title=\"hello\"'"
+            --form 'test_title=\"SCA\"'"
 
           }
         failure {

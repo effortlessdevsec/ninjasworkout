@@ -30,9 +30,9 @@ script {
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test \"$(pwd)\" --json-file-output=SNYK.json'
                                  snyk_exit_code=$?
-                                if(snyk_exit_code==1){
+                                if (snyk_exit_code==1){
                                      echo "vulnerabilities found . uploading code to Defectdojo "
-                                } else{  echo "no vulnerabilities found" }
+                                } else {  echo "no vulnerabilities found" }
 
            
 

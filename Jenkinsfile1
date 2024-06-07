@@ -50,6 +50,7 @@ pipeline {
 
     post {
           always{
+           sh 'cat NJSSCAN.json'
               sh "curl --location 'http://localhost:8080/api/v2/reimport-scan/' \
             --header 'Authorization: Token ${DEFECT_DOJO}' \
             --form 'engagement_name=\"SAST\"' \

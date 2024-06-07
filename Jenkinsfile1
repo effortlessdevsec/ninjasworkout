@@ -58,7 +58,7 @@ pipeline {
               --form "active=\"true\"" \
               --form "lead=\"1\"" \
               --form "tags=\"test\"" \
-              --form "scan_type=\"Snyk Scan\"" \
+              --form "scan_type=\"Snyk\\ Scan\"" \
               --form "minimum_severity=\"Info\"" \
               --form "close_old_findings=\"false\"" \
               --form "file=@$(pwd)/NJSSCAN.json" \

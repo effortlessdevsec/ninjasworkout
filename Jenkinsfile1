@@ -29,6 +29,7 @@ pipeline {
                             sh 'snyk auth "${SNYK_TOKEN}"'
                             sh 'snyk test \"$(pwd)\" --json-file-output=SNYK.json'
                                 def snyk_exit_code = sh(script: 'echo $?', returnStatus: true)
+                                echo snyk_exit_code
 
                                 if (snyk_exit_code==1){
                                      echo "vulnerabilities found  "

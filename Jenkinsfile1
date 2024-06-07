@@ -31,14 +31,7 @@ pipeline {
                                 def snyk_exit_code = sh(script: 'echo $?', returnStatus: true)
                                 echo 'snyk exit code is "${snyk_exit_code}"'
 
-                                if (snyk_exit_code==1){
-                                     echo "vulnerabilities found  "
-                                } else {  echo "no vulnerabilities found" }
-
-           
-
-                          
-
+                                snyk test "$(pwd)" --json-file-output=SNYK.json ; if [ $? -eq 1 ]; then echo "Previous command exited with status 1" fi
                         }
                     }
                 }

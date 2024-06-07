@@ -23,13 +23,14 @@ pipeline {
             parallel {
                 stage('SCA SCAN') {
                     steps {
-                        echo 'Running Snyk security test'
-                         script {
-                          echo "${env.JOB_NAME}"
-                            sh 'snyk auth "${SNYK_TOKEN}"'
-                            sh 'snyk test "$(pwd)" --json-file-output=SNYK.json ; if [ $? -eq 1 ]; then echo "Previous command exited with status 1" fi'
-                        }
-                    }
+    echo 'Running Snyk security test'
+    script {
+        echo "${env.JOB_NAME}"
+        sh "snyk auth ${SNYK_TOKEN}"
+        sh 'snyk test "$(pwd)" --json-file-output=SNYK.json ; if [ $? -eq 1 ]; then echo "Previous command exited with status 1"; fi'
+    }
+}
+
                 }
 
                 stage('SAST SCAN') {

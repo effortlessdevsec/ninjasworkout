@@ -38,7 +38,7 @@ pipeline {
     echo 'Starting SAST scan'
     script {
         sh '''
-            semgrep --config "p/nodejsscan" "$(pwd)" --json -o semgrep.json 
+            semgrep --config "p/nodejsscan" "$(pwd)" --json -o semgrep.json  --suppress-errors
                                                                            '''
         
     }

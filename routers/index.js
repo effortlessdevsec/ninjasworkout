@@ -40,12 +40,12 @@ var cors = require('cors')
 const { check,validationResult } = require('express-validator');
 const { find } = require('../models/user');
 
-app.use(cors())
+router.use(cors())
 
 
 app.set('view engine', 'pug');
 app.set('views','../views');
-app.use(bodyParser.json());
+router.use(bodyParser.json());
 
 const urlencodedParser = bodyParser.urlencoded({ extended: true })
 
@@ -69,6 +69,48 @@ router.get("/secret/login",(req, res)=>{
   console.log(secretstring);
     res.render('login',{secrettoken:secretstring});
 })
+
+app.post("/secret/profile",(req,res)=>{
+
+  res.send("hello");
+})
+
+//callback 
+router.post("/auth/callback", async (req, res) => {
+  
+  try {
+    console.log(req.body)
+    const { token } = req.body;
+
+      // Exchange the token for user info from Google
+      const response = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: {
+              Authorization: `Bearer ${token}`
+          }
+      });
+  
+      const userData = response.data;
+      // Create a session for the user
+      const username = userData.name;
+      const email = userData.email
+      console.log(username);
+       const accessToken = jwt.sign({ username: username,  email: email, admin: false}, accessTokenSecret);
+
+       res.cookie("Auth",accessToken)
+       // console.log()  req.session.user = accessToken;
+         global.hello = username;
+         res.json({ redirectUrl: '/secret/profile' });
+
+      // Respond to the client
+      // res.json({ message: 'Token received and session created', user: userData });
+  } catch (error) {
+      console.error('Error fetching user info:', error);
+      res.status(500).json({ error: 'Failed to authenticate' });
+  }
+
+
+
+});
 
 //// login routes  
 
